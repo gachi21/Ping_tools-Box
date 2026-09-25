@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:background="@color/bg" android:padding="28dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="◉ PING TOOLS BOX" android:textColor="@color/accent" android:textSize="30sp" android:textStyle="bold"/>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Network diagnostics • Android TV / Android Box • API 27+" android:textColor="@color/muted" android:textSize="16sp" android:layout_marginBottom="18dp"/>
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+<EditText android:id="@+id/hostInput" android:layout_width="0dp" android:layout_height="56dp" android:layout_weight="1" android:hint="Host / IP" android:text="1.1.1.1" android:singleLine="true" android:inputType="textUri" android:textColor="@color/text" android:background="@color/panel2"/>
+<Spinner android:id="@+id/presetSpinner" android:layout_width="210dp" android:layout_height="56dp" android:layout_marginStart="12dp"/>
+</LinearLayout>
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="12dp">
+<EditText android:id="@+id/countInput" android:layout_width="0dp" android:layout_height="52dp" android:layout_weight="1" android:text="0" android:hint="Count (0 = unlimited)" android:inputType="number" android:singleLine="true" android:textColor="@color/text" android:background="@color/panel2"/>
+<EditText android:id="@+id/intervalInput" android:layout_width="0dp" android:layout_height="52dp" android:layout_weight="1" android:layout_marginStart="12dp" android:text="1000" android:hint="Interval ms" android:inputType="number" android:singleLine="true" android:textColor="@color/text" android:background="@color/panel2"/>
+<EditText android:id="@+id/timeoutInput" android:layout_width="0dp" android:layout_height="52dp" android:layout_weight="1" android:layout_marginStart="12dp" android:text="1500" android:hint="Timeout ms" android:inputType="number" android:singleLine="true" android:textColor="@color/text" android:background="@color/panel2"/>
+</LinearLayout>
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="14dp">
+<Button android:id="@+id/startButton" android:layout_width="160dp" android:layout_height="56dp" android:text="START" android:focusable="true"/>
+<Button android:id="@+id/stopButton" android:layout_width="160dp" android:layout_height="56dp" android:layout_marginStart="12dp" android:text="STOP" android:focusable="true"/>
+<Button android:id="@+id/clearButton" android:layout_width="130dp" android:layout_height="56dp" android:layout_marginStart="12dp" android:text="CLEAR" android:focusable="true"/>
+<Button android:id="@+id/copyButton" android:layout_width="130dp" android:layout_height="56dp" android:layout_marginStart="12dp" android:text="COPY" android:focusable="true"/>
+<Button android:id="@+id/shareButton" android:layout_width="130dp" android:layout_height="56dp" android:layout_marginStart="12dp" android:text="SHARE" android:focusable="true"/>
+</LinearLayout>
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:background="@color/panel" android:padding="16dp" android:layout_marginTop="18dp">
+<TextView android:id="@+id/sentText" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="TX 0"/>
+<TextView android:id="@+id/receivedText" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="RX 0"/>
+<TextView android:id="@+id/lossText" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="LOSS 0%"/>
+<TextView android:id="@+id/minText" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="MIN --"/>
+<TextView android:id="@+id/avgText" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="AVG --"/>
+<TextView android:id="@+id/maxText" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="MAX --"/>
+<TextView android:id="@+id/jitterText" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="JITTER --"/>
+</LinearLayout>
+<TextView android:id="@+id/outputText" android:layout_width="match_parent" android:layout_height="380dp" android:layout_marginTop="18dp" android:background="@color/panel" android:padding="18dp" android:fontFamily="monospace" android:textColor="@color/text" android:text="PING TOOLS BOX ready.&#10;Select a host and press START."/>
+</LinearLayout></ScrollView>
