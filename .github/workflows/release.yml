@@ -1,0 +1,42 @@
+name: Android Box Build & Release
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: gradle
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.9"
+      - name: Build release APK
+        run: gradle assembleRelease --no-daemon
+      - name: Locate APK
+        run: |
+          APK=$(find app/build/outputs/apk/release -type f -name "*.apk" | head -n 1)
+          test -n "$APK"
+          cp "$APK" Ping-Tools-Box.apk
+          ls -lh Ping-Tools-Box.apk
+      - name: Verify APK signature
+        run: |
+          SDK_BUILD_TOOLS=$(find "$ANDROID_HOME/build-tools" -maxdepth 1 -mindepth 1 -type d | sort -V | tail -n 1)
+          "$SDK_BUILD_TOOLS/apksigner" verify --verbose Ping-Tools-Box.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Ping-Tools-Box
+          path: Ping-Tools-Box.apk
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="build-${{ github.run_number }}"
+          gh release create "$TAG" Ping-Tools-Box.apk --title "Ping Tools Box $TAG" --generate-notes
